@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Try v1.2 Bootstrap Online</title>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<script>
+$(document).ready(function(){
+
+$(saveBtn).click(function(){
+    //var noteLabel = $(label).val();
+    var noteContent = $(content).val();
+    var outputarea = $(output);
+    var info = [
+     { "content":"Doe" }];
+    $.each(info, function() {
+        i=0;
+       // info[i].label = noteLabel;
+        info[i].content = noteContent;
+       /* outputarea.append('label: ' + info[i].label + '<br>content:' + info[i].content + '<button onclick="recallNote();">Recall</button><hr />');*/
+	   outputarea.append('<br>content:' + info[i].content + '<hr />');
+	   
+        i++;
+        function recallNote(){
+         //  $(label).val(info[i].label); 
+           $(content).val(info[i].content); 
+        }
+    });
+	localStorage.setItem('outputarea', JSON.stringify(info));
+	info = JSON.parse(localStorage.getItem('outputarea'));
+});
+
+
+});
+
+</script>
+<body>
+
+<h2>Example of creating Modals with Twitter Bootstrap</h2>
+
+<!-- Button trigger modal -->
+<button class = "btn btn-primary btn-lg" data-toggle = "modal" data-target = "#myModal">
+   Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog" 
+   aria-labelledby = "myModalLabel" aria-hidden = "true">
+   
+   <div class = "modal-dialog">
+      <div class = "modal-content">
+         
+         <div class = "modal-header">
+            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+                  &times;
+            </button>
+            
+            <h4 class = "modal-title" id = "myModalLabel">
+               This Modal title
+            </h4>
+         </div>
+         
+         <div class = "modal-body">
+           <!-- Add some text here
+			<hr>
+			
+			<label>Label: </label>
+    <br />
+    <input type="text" id="label" class="label"/><hr />
+    <label>Note Content: </label> 
+    <br /> -->
+    <textarea id="content"></textarea>
+	<br /><br/>
+    <button id="saveBtn">Submit</button>
+    <div id="output" style="overflow: auto; height: 250px; width: 150px;">
+    </div>
+	
+         </div>
+		 
+         
+         <div class = "modal-footer">
+            <!--<button type = "button" class = "btn btn-default" data-dismiss = "modal">
+               Close
+            </button> --->
+            
+            <!--<button type = "button" class = "btn btn-primary">
+               Submit changes
+            </button>-->
+         </div>
+         
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+  
+</div><!-- /.modal -->
+
+</body>
+</html>
